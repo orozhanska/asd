@@ -19,6 +19,8 @@ def change(i, new_priority):
         queue.remove((i, old_priority))
     queue_dict[i] = new_priority
     queue.append((i, new_priority))
+
+    
 while True:
     try:
         command = input()
