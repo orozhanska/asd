@@ -30,6 +30,9 @@ def quick_sort(arr, left, right):
     quick_sort(arr, left, index - 1)
     quick_sort(arr, index + 1, right)
 
+
+# the tests are by chatgpt
+
 def test_partition():
     # Test 1: Basic test with distinct numbers
     arr = [5, 4, 1, 3, 7]

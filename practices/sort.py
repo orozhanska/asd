@@ -8,7 +8,7 @@ def random_array(size):
 def selection_sort(arr):
     for i in range(0, len(arr)-1):
         min_ind = i
-        for k in range (i, len(arr)):
+        for k in range (i+1, len(arr)):
             if arr[k] < arr[min_ind]:
                 min_ind = k
         arr[i], arr[min_ind] = arr[min_ind], arr[i]
