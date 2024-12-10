@@ -21,6 +21,7 @@ class Graph:
         dst_node = self.alist[dst][0]
         src_list.append(dst_node)
         # directed graph
+        
     def check_edge(self, src, dst):
         # Check if the destination node exists in the source node's adjacency list
         src_list = self.alist[src]
