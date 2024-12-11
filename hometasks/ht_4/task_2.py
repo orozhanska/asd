@@ -1,5 +1,6 @@
 # recommendation_tests.py
-
+# i took into account only friends of directs friends, not friends of friends of direct friends etc
+# the task did not mentioned how deep into the graph we should go, as far as I remember 
 def recommend_friends(graph, user):
     recommendations = {}
     for direct_friend in graph.get(user, set()):
@@ -11,6 +12,25 @@ def recommend_friends(graph, user):
                 recommendations[friend] +=1
     
     recommendations = list(sorted(recommendations.items(), key= lambda x: -x[1]))
+    return recommendations
+
+def recommend_friends_weighted(graph, user):
+    recommendations = {}
+  
+    # graph = {A: {(B, 0.2), (D, 1)},
+    #            ...}  
+
+    direct_friends = {direct_friend for direct_friend, _ in graph.get(user, set())}
+    
+    for direct_friend, direct_weight in graph.get(user, set()):
+        for friend, weight in graph.get(direct_friend, set()):
+            if friend not in direct_friends and friend != user:
+                if friend not in recommendations:
+                    recommendations[friend] = 0
+                
+                recommendations[friend] += direct_weight + weight  # or use other relationships 
+
+    recommendations = sorted(recommendations.items(), key=lambda x: -x[1])
     return recommendations
 
 
@@ -135,5 +155,3 @@ def test_recommendation_system():
 
 if __name__ == "__main__":
     test_recommendation_system()
-
-# TO DO: weighted
