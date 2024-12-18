@@ -99,7 +99,7 @@ bst.insert(10)
 bst.insert(1)
 bst.insert(6)
 
-print(bst.search(2))
+print(bst.search(8))
 print(bst.search(7))
 
 bst.remove(1)
